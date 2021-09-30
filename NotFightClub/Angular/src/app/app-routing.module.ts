@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { TestComponent } from './test/test.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ChatComponent } from './chat/chat.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
@@ -24,6 +23,7 @@ import { ArchiveComponent } from './archive/archive.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
   { path: 'test1', component: TestComponent, canActivate: [AuthGuard] },
   { path: 'chat', component: ChatComponent },
   { path: 'store', component: StoreComponent },
@@ -31,13 +31,10 @@ const routes: Routes = [
   { path: 'character', component: CharacterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserListComponent },
-
   { path: 'users/:userId', component: UserProfileComponent },
   { path: 'fight/:fightId', component: FightComponent },
   { path: 'archive', component: ArchiveComponent },
   { path: '**', component: HomeComponent }
-
-
 ]
 
 

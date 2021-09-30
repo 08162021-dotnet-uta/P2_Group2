@@ -12,12 +12,12 @@ trigger:
     include:
     - NotFightClub/Angular
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '14.x'
   displayName: 'Install Node.js'
   
 
@@ -42,7 +42,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(4) (8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2)'
+    azureSubscription: '8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2'
     appType: 'webApp'
-    WebAppName: 'CafeAPI-Angular'
+    WebAppName: 'NotFightClub'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'

@@ -49,7 +49,6 @@ stages:
         displayName: Deployment
         inputs:
           ConnectionType: 'AzureRM'
-          azureSubscription: 8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2
-          appType: 'webApp'
+          azureSubscription: 'NotFightClub(8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2)'
           WebAppName: 'NotFightClubApi'
           packageForLinux: $(System.DefaultWorkingDirectory)/**/*.zip'
