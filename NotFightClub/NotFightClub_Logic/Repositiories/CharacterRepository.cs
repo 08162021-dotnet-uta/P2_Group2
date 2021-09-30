@@ -37,7 +37,7 @@ namespace NotFightClub_Logic.Repositiories
         public async Task<ViewCharacter> Read(int id)
         {
           //this will not work because userId is not an integer
-            Character selectedCharacter = await _dbContext.Characters.FromSqlInterpolated($"select * from Character where UserId = {id}").FirstOrDefaultAsync();
+            Character selectedCharacter = await _dbContext.Characters.FromSqlInterpolated($"select * from Character where CharacterId = {id}").FirstOrDefaultAsync();
             
             return _mapper.ModelToViewModel(selectedCharacter);
         }

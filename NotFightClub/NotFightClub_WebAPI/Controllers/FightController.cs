@@ -30,5 +30,13 @@ namespace NotFightClub_WebAPI.Controllers
       ViewFight fight = await _fr.Read(id);
       return Ok(fight);
     }
+
+    [HttpGet("/fight/current")]
+    public async Task<ActionResult<ViewFight>> GetCurrent()
+    {
+      List<ViewFight> fights = await _fr.Read();
+      ViewFight fight = fights.Last();
+      return Ok(fight);
+    }
   }
 }

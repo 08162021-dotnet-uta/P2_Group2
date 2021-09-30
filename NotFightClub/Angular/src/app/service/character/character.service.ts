@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Character } from '../../interfaces/character';
 
 @Injectable({
@@ -18,5 +20,9 @@ export class CharacterService {
 
       })
     })
+  }
+
+  GetCharacter(charId: number): Observable<Character> {
+    return this.http.get<Character>(`${this.url}/api/character/${charId}`).pipe(map((character: Character) => character));
   }
 }

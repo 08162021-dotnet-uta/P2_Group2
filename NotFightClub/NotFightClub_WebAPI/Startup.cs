@@ -66,7 +66,7 @@ namespace NotFightClub_WebAPI
             services.AddSingleton<IRepository<ViewWeapon, int>, WeaponRepository>();
             services.AddSingleton<IMapper<Weapon, ViewWeapon >, WeaponMapper > ();
             services.AddSingleton<IRepository<ViewFight, int>, FightRepository>();
-
+            services.AddSingleton<IMapper<Fighter, ViewFighter>, FighterMapper>();
             services.AddSingleton<IRepository<ViewFighter, int>, FighterRepository>();
             services.AddSingleton<IMapper<Fight, ViewFight>, FightMapper>();
 

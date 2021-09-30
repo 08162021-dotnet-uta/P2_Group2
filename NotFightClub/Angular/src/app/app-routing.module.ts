@@ -32,8 +32,7 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
 
   { path: 'users/:userId', component: UserProfileComponent },
-  { path: 'fight/:fightId', component: FightComponent }
-
+  { path: 'fight', component: FightComponent }
 ]
 
 
