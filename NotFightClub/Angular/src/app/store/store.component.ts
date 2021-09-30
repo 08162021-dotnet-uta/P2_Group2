@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Trait } from '../interfaces/trait';
 import { BucksService } from '../service/bucks/bucks.service';
 import { TraitService } from '../service/trait/trait.service';
-
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-store',
@@ -14,12 +13,25 @@ import { TraitService } from '../service/trait/trait.service';
 })
 export class StoreComponent implements OnInit {
 
+  user: User | null = null;
 
   constructor(private bucksService: BucksService, private traitService: TraitService, private router: Router) { }
 
   ngOnInit(): void {
+    let userString: string | null = sessionStorage.getItem('user');
+    if (userString !== null) {
+      let userJSON = JSON.parse(userString);
+      this.user = userJSON;
+    }
   }
 
+  getRich(): void {
+    this.bucksService.adjustBucks(2000).subscribe(canAfford => {
+      if (canAfford) {
+        alert("You now have 2000 more !Bucks.")
+      }
+    })
+  }
 
   addTrait(): void {
     //Prompt the user for a trait
