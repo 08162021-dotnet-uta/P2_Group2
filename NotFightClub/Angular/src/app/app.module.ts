@@ -7,7 +7,6 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
-import { TestComponent } from './test/test.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +29,6 @@ import { HomeComponent } from './home/home.component';
     ChatComponent,
     LoginComponent,
     RegisterComponent,
-    TestComponent,
     EditProfileComponent,
     UserListComponent,
     ageValidatorDirective,
