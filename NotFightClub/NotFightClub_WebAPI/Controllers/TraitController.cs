@@ -25,7 +25,7 @@ namespace NotFightClub_WebAPI.Controllers
 
     public TraitController(IRepository<ViewTrait, int> repo, P2_NotFightClubContext context)
     {
-       _repo = repo;
+      _repo = repo;
       _context = context;
     }
 

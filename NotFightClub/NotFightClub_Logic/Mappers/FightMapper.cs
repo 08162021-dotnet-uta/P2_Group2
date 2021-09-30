@@ -25,6 +25,11 @@ namespace NotFightClub_Logic.Mappers
       return viewFight;
     }
 
+    public List<ViewFight> ModelToViewModel(List<Fight> obj)
+    {
+      throw new NotImplementedException();
+    }
+
     public Fight ViewModelToModel(ViewFight obj)
     {
       Fight fight = new Fight();
@@ -39,41 +44,33 @@ namespace NotFightClub_Logic.Mappers
       return fight;
     }
 
-    public List<ViewFight> ModelToViewModel(List<Fight> obj)
+    public List<Fight> ViewModelToModel(List<ViewFight> obj)
     {
-      List<ViewFight> fights = new List<ViewFight>();
-      for (int i = 0; i < obj.Count; i++)
-      {
-        ViewFight f = new ViewFight();
-        f.FightId = obj[i].FightId;
-        f.Winner = obj[i].Winner;
-        f.Loser = obj[i].Loser;
-        f.Date = obj[i].Date;
-        f.Result = obj[i].Result;
-        f.Location = obj[i].Location;
-        f.Weather = obj[i].Weather;
-        fights.Add(f);
-      }
-
-      return fights;
+      throw new NotImplementedException();
     }
 
 
-    public List<Fight> ViewModelToModel(List<ViewFight> obj)
+    public List<ViewFight> ModelToViewModel(List<Fight> obj)
     {
-      List<Fight> fights = new List<Fight>(obj.Count);
-      for (int i = 0; i < obj.Count; i++)
-      {
-        fights[i].FightId = obj[i].FightId;
-        fights[i].Winner = obj[i].Winner;
-        fights[i].Loser = obj[i].Loser;
-        fights[i].Date = obj[i].Date;
-        fights[i].Result = obj[i].Result;
-        fights[i].Location = obj[i].Location;
-        fights[i].Weather = obj[i].Weather;
-      }
-
-      return fights;
+       List<ViewFight> fights = new List<ViewFight>();
+            for (int i = 0; i < obj.Count; i++)
+            {
+                ViewFight f = new ViewFight(
+                obj[i].Weather,
+                obj[i].FightId,
+                obj[i].Location,
+                obj[i].Winner,
+                obj[i].Loser,
+                obj[i].Date,
+                obj[i].LocationNavigation,
+                obj[i].WeatherNavigation,
+                obj[i].WinnerNavigation,
+                obj[i].LoserNavigation
+          
+                );
+                fights.Add(f);
+            }
+            return fights;
     }
   }
 }
