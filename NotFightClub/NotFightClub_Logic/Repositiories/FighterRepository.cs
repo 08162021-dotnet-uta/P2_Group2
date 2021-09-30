@@ -21,5 +21,9 @@ namespace NotFightClub_Logic.Repositiories
       throw new NotImplementedException();
     }
 
+    public Task<List<ViewFighter>> Read()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

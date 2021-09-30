@@ -25,6 +25,8 @@ namespace NotFightClub_Logic.Mappers
       return viewFight;
     }
 
+ 
+
     public Fight ViewModelToModel(ViewFight obj)
     {
       Fight fight = new Fight();
@@ -37,6 +39,36 @@ namespace NotFightClub_Logic.Mappers
       fight.Weather = obj.Weather;
 
       return fight;
+    }
+
+    public List<Fight> ViewModelToModel(List<ViewFight> obj)
+    {
+      throw new NotImplementedException();
+    }
+
+
+    public List<ViewFight> ModelToViewModel(List<Fight> obj)
+    {
+      //use lazy loading to call the weather description to be loaded
+      List<ViewFight> fights = new List<ViewFight>();
+      for (int i = 0; i < obj.Count; i++)
+      {
+        ViewFight f = new ViewFight(
+        obj[i].Weather,
+        obj[i].FightId,
+        obj[i].Location,
+        obj[i].Winner,
+        obj[i].Loser,
+        obj[i].Date,
+        obj[i].LocationNavigation.Location1,
+        obj[i].WeatherNavigation.Description,
+        obj[i].WinnerNavigation.Name,
+        obj[i].LoserNavigation.Name
+
+        );
+        fights.Add(f);
+      }
+      return fights;
     }
   }
 }

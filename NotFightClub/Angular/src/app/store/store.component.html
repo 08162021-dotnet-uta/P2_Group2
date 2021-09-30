@@ -1,18 +1,11 @@
 <h1>This is not a store</h1>
 
-
-<h2>Reroll character</h2>
-<p>So, you just got your character. If you think they're lame, You can reroll your character! It costs <span
-    id="costReroll">200</span>
-  not bucks. <button onclick="rerollCharacter()">Purchase</button></p>
-
+<!--I'm deleting the reroll character section-->
 
 <h2>Add trait to database</h2>
 <p>Would you like to add a trait to the database? Now is your time to shine! For <span id="costAddTrait">2000</span> not
   bucks, you can add any new trait you want! Just make sure the trait isn't
-  gamebreaking or X-rated. We need to keep it PG-13. <button onclick="addTrait()">Purchase</button></p>
-
-  
+  gamebreaking or X-rated. We need to keep it PG-13. <button (click)="addTrait()">Purchase</button></p>
 
 <h2>Edit character form</h2>
 <p>Want your character to be something else? Now you can change it for just <span id="costEditForm">400</span> not
@@ -20,9 +13,9 @@
 
 <h2>Edit character trait</h2>
 <p>Think your character's trait is lame? Now you can change it for just <span id="costEditTrait">200</span> not bucks.
-<button (click)="editCharacterTrait()">Purchase</button></p>
+  <button (click)="editCharacterTrait()">Purchase</button>
+</p>
 
 <h2>Edit character weapon</h2>
 <p>Don't like the weapon your character has? Now you can change it for just <span id="costEditWeapon">100</span> not
   bucks. <button (click)="editCharacterWeapon()">Purchase</button></p>
-

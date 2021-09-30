@@ -63,15 +63,17 @@ namespace NotFightClub_WebAPI
       services.AddSingleton<IRepository<ViewCharacter, int>, CharacterRepository>();
       services.AddSingleton<IMapper<Character, ViewCharacter>, CharacterMapper>();
       services.AddSingleton<IMapper<Trait, ViewTrait>, TraitMapper>();
-      // services.AddSingleton<IRepository<ViewTrait, int>, TraitRepository > ();
+      services.AddSingleton<IRepository<ViewTrait, int>, TraitRepository>();
       services.AddSingleton<IRepository<ViewWeapon, int>, WeaponRepository>();
       services.AddSingleton<IMapper<Weapon, ViewWeapon>, WeaponMapper>();
-      // services.AddSingleton<IRepository<ViewFight, int>, FightRepository>();
+      services.AddSingleton<IRepository<ViewFight, int>, FightRepository>();
+      services.AddSingleton<IRepository<ViewFighter, int>, FighterRepository>();
+      services.AddSingleton<IMapper<Fight, ViewFight>, FightMapper>();
 
-      // services.AddSingleton<IRepository<ViewFighter, int>, FighterRepository>();
-      // services.AddSingleton<IMapper<Fight, ViewFight>, FightMapper>();
 
       services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(options =>
+          options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotFightClub_WebAPI", Version = "v1" });

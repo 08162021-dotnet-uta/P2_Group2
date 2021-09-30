@@ -25,7 +25,7 @@ namespace NotFightClub_WebAPI.Controllers
 
     public TraitController(IRepository<ViewTrait, int> repo, P2_NotFightClubContext context)
     {
-       _repo = repo;
+      _repo = repo;
       _context = context;
     }
 
@@ -55,7 +55,7 @@ namespace NotFightClub_WebAPI.Controllers
       //call to repository to add trait
       //return the result
       //Console.WriteLine(viewTrait);
-      var newTrait = await _ur.Add(viewTrait);
+      var newTrait = await _repo.Add(viewTrait);
       return Ok(newTrait);
     }
   }

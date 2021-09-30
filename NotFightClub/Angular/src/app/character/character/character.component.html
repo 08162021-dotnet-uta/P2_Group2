@@ -72,42 +72,43 @@
             <button type="button" class="w-100 btn btn-lg btn-primary">Submit Trait</button>
 
 
-            </div>
-
           </div>
+
         </div>
       </div>
+    </div>
 
 
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <div class="card-header py-3 text-white bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Weapon</h4>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3 text-white bg-primary border-primary">
+          <h4 class="my-0 fw-normal">Weapon</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title">Random Weapon</h3>
+          <div class="generate-weapon-here">
+            <h5>{{weaponName}}</h5>
           </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">Random Weapon</h3>
-            <div class="generate-weapon-here">
-              <h5>{{weaponName}}</h5>
-            </div>
-            <button type="button" class="w-100 btn btn-lg btn-primary" (click)="SubmitWeapon()">Generate Weapon</button>
-          </div>
+          <button type="button" class="w-100 btn btn-lg btn-primary" (click)="SubmitWeapon()">Generate Weapon</button>
         </div>
       </div>
+    </div>
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <div class="card-header py-3 text-white bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Ready?</h4>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">Submit Your Character</h3>
-            <div class="generate-weapon-here">
-              <h5>{{character.name}}</h5>
-            </div>
-            <button type="button" class="w-100 btn btn-lg btn-primary" (click)="SubmitCharacter()">Submit
-              Character</button>
-          </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3 text-white bg-primary border-primary">
+          <h4 class="my-0 fw-normal">Ready?</h4>
         </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title">Submit Your Character</h3>
+          <div class="generate-weapon-here">
+            <h5>{{character.name}}</h5>
+          </div>
+          <button type="button" class="w-100 btn btn-lg btn-primary" (click)="SubmitCharacter()">Submit
+            Character</button>
+        </div>
+
       </div>
+    </div>
   </main>

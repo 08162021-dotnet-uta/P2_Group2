@@ -7,6 +7,7 @@ using NotFightClub_Logic.Interfaces;
 using NotFightClub_Models.ViewModels;
 using NotFightClub_Models.Models;
 using NotFightClub_Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotFightClub_Logic.Repositiories
 {
@@ -30,6 +31,14 @@ namespace NotFightClub_Logic.Repositiories
       Fight fight = await Task.Run(() => _dbContext.Fights.Find(obj));
 
       return _mapper.ModelToViewModel(fight);
+    }
+
+    public async Task<List<ViewFight>> Read()
+    {
+
+      List<Fight> fights = await _dbContext.Fights.Include("WeatherNavigation").Include("LocationNavigation").Include("LoserNavigation").Include("WinnerNavigation").ToListAsync();
+
+      return _mapper.ModelToViewModel(fights);
     }
   }
 }

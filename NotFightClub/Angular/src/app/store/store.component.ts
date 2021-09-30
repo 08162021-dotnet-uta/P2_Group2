@@ -35,10 +35,17 @@ export class StoreComponent implements OnInit {
     let choice: boolean = confirm(`Are you sure you want to add the new trait "${newTrait}"? It will cost 2000 not bucks.`);
     if (!choice) return;
     //get user's bucks, and reduce by 2000.
-    if (this.bucksService.adjustBucks(-2000)) {
-      //Add the trait to the database
-      alert("Your trait has been added to the database.")
-    }
+    this.bucksService.adjustBucks(-2000).subscribe(canAfford => {
+      if (canAfford) {
+        //Add the trait to the database
+        if (newTrait !== null) {
+          let trait: Trait = { traitId: 0, description: newTrait };
+          this.traitService.AddTrait(trait).subscribe(trait => console.log(trait));
+          alert("Your trait has been added to the database.")
+        }
+      }
+    })
+
   }
 
   editCharacterForm(): void {

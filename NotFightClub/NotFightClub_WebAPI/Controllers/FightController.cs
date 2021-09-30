@@ -30,5 +30,20 @@ namespace NotFightClub_WebAPI.Controllers
       ViewFight fight = await _fr.Read(id);
       return Ok(fight);
     }
+
+    [HttpGet]
+    public async Task<ActionResult<List<ViewFight>>> Get()
+    {
+      List<ViewFight> fights = await _fr.Read();
+      return Ok(fights);
+    }
+
+    [HttpGet("/[Controller]/[action]")]
+    public async Task<ActionResult<List<ViewFight>>> All()
+    {
+      List<ViewFight> fights = await _fr.Read();
+      return Ok(fights);
+
+    }
   }
 }
