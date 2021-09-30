@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { User } from '../../interfaces/user';
 import { Observable, of } from 'rxjs';
+import { Guid } from 'guid-typescript';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class BucksService {
     }
 
     //How do I make it so that the user's data is updated in the database?
-    this.userService.editProfile(user).subscribe(user => console.log(user.bucks));
+    this.userService.editProfile(Guid.create(), user).subscribe(user => console.log(user.bucks));
 
     //turns the user object back into a string
     userString = JSON.stringify(user);

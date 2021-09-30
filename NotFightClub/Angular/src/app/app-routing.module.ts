@@ -23,12 +23,10 @@ import { ArchiveComponent } from './archive/archive.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-
-  { path: 'test1', component: TestComponent, canActivate: [AuthGuard] },
   { path: 'chat', component: ChatComponent },
   { path: 'store', component: StoreComponent },
   { path: 'edit-profile/:userId', component: EditProfileComponent },
-  { path: 'character', component: CharacterComponent },
+  { path: 'character', component: CharacterComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:userId', component: UserProfileComponent },
