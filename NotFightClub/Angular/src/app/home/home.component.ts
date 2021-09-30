@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
+  showFirst: boolean = true;
 
   ngOnInit(): void {
+  }
+
+  Toggle() {
+    this.showFirst = false;
   }
 
 }

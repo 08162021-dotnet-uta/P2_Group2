@@ -1,5 +1,4 @@
-
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">!FightClub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
@@ -10,7 +9,12 @@
     <div class="collapse navbar-collapse" id="navbarsExample03">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item">
-          <span class="nav-link" aria-current="page" (click)="navigateToProfile()" *ngIf="authenticate()">My Profile</span>
+
+          <a class="nav-link" aria-current="page" routerLink="test1" *ngIf="authenticate()">TestHiddenPage</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" aria-current="page" (click)="navigateToProfile()" *ngIf="authenticate()">My
+            Profile</span>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="login" *ngIf="!authenticate()">Login</a>
@@ -59,5 +63,5 @@
 
 
 
-
-   <router-outlet></router-outlet>
+<!-- <app-home></app-home> -->
+<router-outlet></router-outlet>
