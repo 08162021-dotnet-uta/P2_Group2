@@ -23,14 +23,14 @@ import { ArchiveComponent } from './archive/archive.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'chat', component: ChatComponent },
-  { path: 'store', component: StoreComponent },
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: 'store', component: StoreComponent, canActivate: [AuthGuard] },
   { path: 'edit-profile/:userId', component: EditProfileComponent },
   { path: 'character', component: CharacterComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'users/:userId', component: UserProfileComponent },
-  { path: 'fight/:fightId', component: FightComponent },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
+  { path: 'users/:userId', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'fight/:fightId', component: FightComponent, canActivate: [AuthGuard] },
   { path: 'archive', component: ArchiveComponent },
   { path: '**', component: HomeComponent }
 ]
