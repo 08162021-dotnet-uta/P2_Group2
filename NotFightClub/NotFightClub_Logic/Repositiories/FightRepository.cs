@@ -35,7 +35,9 @@ namespace NotFightClub_Logic.Repositiories
 
     public async Task<List<ViewFight>> Read()
     {
-      List<Fight> fights = await _dbContext.Fights.ToListAsync();
+
+      List<Fight> fights = await _dbContext.Fights.Include("WeatherNavigation").Include("LocationNavigation").Include("LoserNavigation").Include("WinnerNavigation").ToListAsync();
+
       return _mapper.ModelToViewModel(fights);
     }
   }

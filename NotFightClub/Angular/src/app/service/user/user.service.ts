@@ -25,14 +25,14 @@ export class UserService {
     return this.http.get<User>(`${this.url}/users/` + id).pipe(map((user:User)=>user))
   }
 
-  editProfile(user: User): Observable<User> {
+  editProfile(id: Guid, user: User): Observable<User> {
     console.log(user);
-    return this.http.put<User>(this.url + '/edit-profile/'+ user.userId, user, {
-
+    // let userInput = { id : id1, UserId: user.userId, UserName: user.userName, Pword: user.pword, Email: user.email, Dob: user.dob, Bucks: user.bucks }
+    // console.log(userInput);
+    return this.http.put<User>(`${this.url}/edit-profile/${user.userId}`, user, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       })
-       
     });
   }
 

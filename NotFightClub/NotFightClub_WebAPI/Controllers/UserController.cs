@@ -8,6 +8,8 @@ using NotFightClub_Data;
 using NotFightClub_Logic.Interfaces;
 using NotFightClub_Models.Models;
 using NotFightClub_Models.ViewModels;
+using Microsoft.Extensions.Logging;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,13 +21,15 @@ namespace NotFightClub_WebAPI.Controllers
   {
     private readonly P2_NotFightClubContext _context;
 
+    private readonly ILogger<UserController> _logger;
 
     private readonly IRepository<ViewUserInfo, string> _ur;
 
-    public UserController(IRepository<ViewUserInfo, string> ur, P2_NotFightClubContext context)
+    public UserController(IRepository<ViewUserInfo, string> ur, P2_NotFightClubContext context, ILogger<UserController> logger)
     {
       _ur = ur;
       _context = context;
+      _logger = logger;
     }
 
 
@@ -48,8 +52,13 @@ namespace NotFightClub_WebAPI.Controllers
     [HttpGet("/[action]/{email}")]
     public async Task<ActionResult<ViewUserInfo>> Login(string email)
     {
+
       if (!ModelState.IsValid) return BadRequest("Invalid data.");
+
       var loggedUser = await _ur.Read(email);
+
+      _logger.LogInformation($"{loggedUser.UserName} logged in");
+
       return Ok(loggedUser);
     }
 
@@ -72,6 +81,8 @@ namespace NotFightClub_WebAPI.Controllers
       //return the result
       //Console.WriteLine(viewUser);
       var registeredUser = await _ur.Add(viewUser);
+
+      _logger.LogInformation($"Registered New User with Username: {viewUser.UserName}");
       return Ok(registeredUser);
     }
 
@@ -82,13 +93,13 @@ namespace NotFightClub_WebAPI.Controllers
     // }
 
     [HttpPut("/edit-profile/{id}")]
-    public async Task<IActionResult> PutUsers(Guid id, UserInfo user)
+    public async Task<IActionResult> PutUsers(Guid id, [FromBody] UserInfo user)
     {
       if (id != user.UserId)
       {
         return BadRequest();
       }
-
+      _logger.LogInformation($"Updating {user.UserName}'s profile");
       _context.Entry(user).State = EntityState.Modified;
 
       try
@@ -106,6 +117,7 @@ namespace NotFightClub_WebAPI.Controllers
           throw;
         }
       }
+      _logger.LogInformation($"Updated details: Username: {user.UserName} || Email: {user.Email} || DOB: {user.Dob}");
 
       return NoContent();
     }
@@ -126,6 +138,8 @@ namespace NotFightClub_WebAPI.Controllers
 
       _context.UserInfos.Remove(user);
       await _context.SaveChangesAsync();
+
+      _logger.LogInformation($"{user.UserName} deleted.");
 
       return NoContent();
     }

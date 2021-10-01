@@ -1,4 +1,5 @@
 # Node.js with Angular
+
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -9,18 +10,39 @@ trigger:
     - main
   paths:
     include:
-    - NotFightClub/NotFightClub_WebAPI/Angular/
+    - NotFightClub/Angular
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '14.x'
   displayName: 'Install Node.js'
+  
 
 - script: |
     npm install -g @angular/cli
     npm install
     ng build --prod
   displayName: 'npm install and build'
+  workingDirectory: 'NotFightClub/Angular'
+
+
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: 'NotFightClub/Angular/dist/Angular'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: '47734c62-808c-4cef-bb38-c7b0ab858696'
+    appType: 'webApp'
+    WebAppName: 'NotFightClub'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+

@@ -7,7 +7,6 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
-import { TestComponent } from './test/test.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +17,9 @@ import { FightComponent } from './fight/fight.component';
 import { TimerComponent } from './timer/timer.component';
 import { CharacterComponent } from './character/character/character.component';
 import { HomeComponent } from './home/home.component';
+import { ArchiveComponent } from './archive/archive.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -30,14 +32,16 @@ import { HomeComponent } from './home/home.component';
     ChatComponent,
     LoginComponent,
     RegisterComponent,
-    TestComponent,
     EditProfileComponent,
     UserListComponent,
     ageValidatorDirective,
     FightComponent,
     TimerComponent,
     CharacterComponent,
-    HomeComponent
+    HomeComponent,
+    ArchiveComponent,
+
+
   ],
   imports: [
     HttpClientModule,
@@ -46,6 +50,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

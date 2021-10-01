@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NotFightClub_Data;
 using NotFightClub_Logic.Interfaces;
@@ -18,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
 
 namespace NotFightClub_WebAPI
 {
@@ -57,6 +58,7 @@ namespace NotFightClub_WebAPI
       //});
       services.AddDbContext<P2_NotFightClubContext>();
 
+
             services.AddSingleton<IRepository<ViewUserInfo, string>, UserRepository>();
             services.AddSingleton<IMapper<UserInfo, ViewUserInfo>, UserInfoMapper>();
             services.AddSingleton<IRepository<ViewCharacter, int>, CharacterRepository>();
@@ -70,7 +72,10 @@ namespace NotFightClub_WebAPI
             services.AddSingleton<IRepository<ViewFighter, int>, FighterRepository>();
             services.AddSingleton<IMapper<Fight, ViewFight>, FightMapper>();
 
+
       services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(options =>
+          options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotFightClub_WebAPI", Version = "v1" });
@@ -78,14 +83,18 @@ namespace NotFightClub_WebAPI
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
     {
+      loggerFactory.AddFile("Logs/app-{Date}.txt");
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NotFightClub_WebAPI v1"));
       }
+
+
 
       app.UseCors("NotFightClubLocal");
 

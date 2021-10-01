@@ -26,26 +26,29 @@ stages:
     - task: UseDotNet@2
       inputs:
         version: '5.0.x'
-   # - task: DownloadSecureFile@1
-    #  name: PubXML
-     # displayName: 'Download .pubxml for Deployment'
-      #inputs:
-       # secureFile: 'NotFightClub-P2.pubxml'
+  
 
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
-
-
-
-    - task: Npm@1
-      inputs:
-        command: 'install'
-        workingDir: $(pathTop2Ang)
 
     - task: VSBuild@1
       inputs:
         solution: '$(pathToP2Sln)'
         msbuildArgs: '/t:Restore;Build'
-
+      
+- stage: Publish
+  jobs:
+  - job: publishapi
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: Publishing
+        inputs:
+          command: 'publish'
+          publishWebProjects: true
+          projects: $(pathtosolution)
+          zipAfterPublish: true
+      - task: AzureRmWebAppDeployment@4
+        displayName: Deployment
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'NotFightClub(8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2)'
+          WebAppName: 'NotFightClubApi'
+          packageForLinux: $(System.DefaultWorkingDirectory)/**/*.zip'
