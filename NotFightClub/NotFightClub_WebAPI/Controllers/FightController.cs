@@ -31,11 +31,14 @@ namespace NotFightClub_WebAPI.Controllers
       return Ok(fight);
     }
 
-    [HttpGet]
-    public async Task<ActionResult<List<ViewFight>>> Get()
+
+    [HttpGet("/fight/current")]
+    public async Task<ActionResult<ViewFight>> GetCurrent()
+
     {
       List<ViewFight> fights = await _fr.Read();
-      return Ok(fights);
+      ViewFight fight = fights.Last();
+      return Ok(fight);
     }
 
     [HttpGet("/[Controller]/[action]")]

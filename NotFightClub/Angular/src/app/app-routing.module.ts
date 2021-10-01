@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:userId', component: UserProfileComponent },
+  { path: 'fight', component: FightComponent },
   { path: 'fight/:fightId', component: FightComponent },
   { path: 'archive', component: ArchiveComponent },
   { path: '**', component: HomeComponent }

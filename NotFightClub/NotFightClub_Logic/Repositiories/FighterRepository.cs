@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 using NotFightClub_Logic.Interfaces;
 using NotFightClub_Models.ViewModels;
 using NotFightClub_Models.Models;
+using NotFightClub_Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotFightClub_Logic.Repositiories
 {
   public class FighterRepository : IRepository<ViewFighter, int>
   {
+    private readonly P2_NotFightClubContext _dbContext = new P2_NotFightClubContext();
+    private readonly IMapper<Fighter, ViewFighter> _mapper;
+
+    public FighterRepository(IMapper<Fighter, ViewFighter> mapper)
+    {
+      _mapper = mapper;
+    }
+
     public Task<ViewFighter> Add(ViewFighter obj)
     {
       throw new NotImplementedException();
@@ -21,9 +31,10 @@ namespace NotFightClub_Logic.Repositiories
       throw new NotImplementedException();
     }
 
-    public Task<List<ViewFighter>> Read()
+    public async Task<List<ViewFighter>> Read()
     {
-      throw new NotImplementedException();
+      List<Fighter> fighters = await _dbContext.Fighters.ToListAsync();
+      return _mapper.ModelToViewModel(fighters);
     }
   }
 }

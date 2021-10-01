@@ -41,11 +41,13 @@ namespace NotFightClub_WebAPI.Controllers
     }
 
     // GET api/traits/5
-    [HttpGet("/traits/{id}")]
+    [HttpGet("/Trait/{id}")]
     public async Task<ActionResult<Trait>> GetTraitById(int id)
     {
-      var trait = await _context.Traits.FindAsync(id);
-      return trait;
+      //var trait = await _context.Traits.FindAsync(id);
+      ViewTrait trait = await _repo.Read(id);
+      //return trait;
+      return Ok(trait);
     }
 
     // POST api/<TraitController>
