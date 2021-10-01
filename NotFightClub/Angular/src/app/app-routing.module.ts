@@ -30,8 +30,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'users/:userId', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'fight/:fightId', component: FightComponent, canActivate: [AuthGuard] },
-  { path: 'fight', component: FightComponent, canActivate: [AuthGuard] },
+  { path: 'fight/:fightId', component: FightComponent },
+  { path: 'fight', component: FightComponent },
   { path: 'archive', component: ArchiveComponent },
   { path: '**', component: HomeComponent }
 ]

@@ -9,6 +9,7 @@ import { CharacterService } from '../service/character/character.service';
 import { WeaponService } from '../service/weapon/weapon.service';
 import { Character } from '../interfaces/character';
 import { Weapon } from '../interfaces/weapon';
+import { TimerComponent } from '../timer/timer.component';
 
 @Component({
   selector: 'app-fight',
@@ -37,7 +38,8 @@ export class FightComponent implements OnInit {
       }
       else {
         console.log("We got a problem.")
-      }}, 1000)
+      }
+    }, 1000)
 
     setTimeout(() => {
       if (this.fighters != null) {
@@ -72,8 +74,8 @@ export class FightComponent implements OnInit {
     setTimeout(() => {
       this.getWeapon(this.characters[1].weaponId, 1);
     }, 7000)
-    
-    
+
+
   }
 
   getCurrentFight() {
@@ -113,7 +115,7 @@ export class FightComponent implements OnInit {
         console.log(trait);
         this.traits.push(trait);
       }
-      
+
     })
   }
 

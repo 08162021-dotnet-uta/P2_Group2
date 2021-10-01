@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Trait } from 'src/app/interfaces/trait';
 import { UserR } from 'src/app/interfaces/userR';
@@ -18,7 +19,7 @@ import { User } from '../../interfaces/user';
 export class CharacterComponent implements OnInit {
 
 
-  constructor(private traitService: TraitService, private weaponService: WeaponService, private characterService: CharacterService) { }
+  constructor(private traitService: TraitService, private weaponService: WeaponService, private characterService: CharacterService, private router: Router) { }
 
   user!: UserR | null;
 
@@ -86,6 +87,9 @@ export class CharacterComponent implements OnInit {
     let OCharacter = this.characterService.CreateCharacter(this.character)
     OCharacter.subscribe(character => {
       console.log('You made a character!');
+      alert('You Made A Character!');
+      this.router.navigateByUrl('/fight');
+
     })
     console.log('This is the full character')
     console.log(this.character)

@@ -6,8 +6,8 @@
         <h1 class="h3 mb-3 fw-normal">Please Register</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingFname" placeholder="username" name="username" minlength="3" maxlength="50"  required
-                 ngModel #username="ngModel" autofocus>
+          <input type="text" class="form-control" id="floatingFname" placeholder="username" name="username"
+            minlength="3" maxlength="50" required ngModel #username="ngModel" autofocus>
           <label for="floatingInput">Username</label>
         </div>
 
@@ -53,8 +53,10 @@
         </div>-->
 
 
+
         <div class="form-floating">
-          <input type="date" class="form-control" id="floatingDOB" placeholder=" " name="dob" appAgeValidator required ngModel #dob="ngModel">
+          <input type="date" class="form-control" id="floatingDOB" placeholder=" " name="dob" appAgeValidator required
+            ngModel #dob="ngModel">
           <label for="floatingInput">Date of Birth</label>
         </div>
         <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="alert alert-danger">
@@ -62,7 +64,7 @@
           <div *ngIf="dob.errors?.required">
             Required.
           </div>
-        
+
           <div *ngIf="dob.errors?.ageInvalid">
             You must be at least 13 years old to register!
           </div>
@@ -71,8 +73,8 @@
 
 
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="email" #email="ngModel"
-                 required ngModel>
+          <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="email"
+            #email="ngModel" required ngModel>
           <label for="floatingInput">Email address</label>
         </div>
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
@@ -85,8 +87,8 @@
         <!-- adding ngModel to the end of the input will allow us to pass the values to the class -->
         <!--#name="ngModel" allows us to pass data from the input to the validators-->
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" minlength="6"
-                 required ngModel #password="ngModel">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"
+            minlength="6" required ngModel #password="ngModel">
           <label for="floatingPassword">Password</label>
         </div>
 
