@@ -19,14 +19,14 @@ namespace NotFightClub_Test
             //Arrange
             ViewTrait c = new ViewTrait();
             c.Description = "Brave";
-            c.TraitId = 1;
+            c.TraitId = 0;
 
             IMapper<Trait, ViewTrait> _mapper = new TraitMapper();
             //Act
             Trait c1 = _mapper.ViewModelToModel(c);
             //Assert
             Assert.Contains("Brave", c1.Description);
-            Assert.Equal(1, c1.TraitId);
+            Assert.Equal(0, c1.TraitId);
 
         }
 

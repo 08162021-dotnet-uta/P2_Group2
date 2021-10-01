@@ -26,7 +26,7 @@ namespace NotFightClub_Test
             //Act
             Weapon c1 = _mapper.ViewModelToModel(c);
             //Assert
-            Assert.Contains("Brave", c1.Description);
+            Assert.Contains("screw", c1.Description);
             Assert.Equal(1, c1.WeaponId);
 
         }
@@ -43,7 +43,7 @@ namespace NotFightClub_Test
             //Act
             ViewWeapon c1 = _mapper.ModelToViewModel(c);
             //Assert
-            Assert.Contains("Brave", c1.Description);
+            Assert.Contains("screw", c1.Description);
             Assert.Equal(1, c1.WeaponId);
 
         }

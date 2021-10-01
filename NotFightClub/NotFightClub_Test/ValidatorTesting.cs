@@ -16,7 +16,7 @@ namespace NotFightClub_Test
         [Theory]
         [InlineData("string", true)]
         [InlineData("abc", false)]
-        [InlineData("password", true)]
+        [InlineData("password", false)]
         public void ShouldValidatePasswordIsAcceptableLength(string str, bool result)
         {
             //arrange
@@ -45,8 +45,8 @@ namespace NotFightClub_Test
 
             //assert
             Assert.False(sut);
-            Assert.True(sut);
-            Assert.True(sut);
+            Assert.True(sut2);
+            Assert.True(sut3);
 
 
         }

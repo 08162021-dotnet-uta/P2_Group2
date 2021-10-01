@@ -22,6 +22,7 @@ namespace NotFightClub_Logic
                 else if (date.Month == thisday.Month)
                 {
                     if (date.Day < thisday.Day) return true;
+                    else if (date.Day == thisday.Day) return true;
                     //if date month == today month check that date day is past today return true
                     else return false;
 
