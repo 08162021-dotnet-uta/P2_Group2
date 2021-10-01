@@ -69,9 +69,11 @@ export class StoreComponent implements OnInit {
     let choice: boolean = confirm(`Are you sure you want your character to become a ${newForm}? It will cost 400 not bucks.`);
     if (!choice) return;
     //get user's bucks, and reduce by 400.
-    if (this.bucksService.adjustBucks(-400)) {
-      //Fighter's form is changed
-    }
+    this.bucksService.adjustBucks(-400).subscribe(canAfford => {
+      if (canAfford) {
+        //Fighter's form is changed
+      }
+    })
   }
 
   editCharacterTrait() {
