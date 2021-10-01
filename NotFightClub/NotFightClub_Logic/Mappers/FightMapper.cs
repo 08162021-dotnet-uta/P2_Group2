@@ -25,7 +25,6 @@ namespace NotFightClub_Logic.Mappers
       return viewFight;
     }
 
- 
 
     public Fight ViewModelToModel(ViewFight obj)
     {

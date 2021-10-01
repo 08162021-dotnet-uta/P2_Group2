@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NotFightClub_Logic.Interfaces;
+using NotFightClub_Models.Models;
 using NotFightClub_Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,22 +22,24 @@ namespace NotFightClub_WebAPI.Controllers
             _repo = repo;
 
         }
-        // GET: api/<WeaponController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+    // GET: api/<WeaponController>
+    //[HttpGet]
+    //public IEnumerable<string> Get()
+    //{
+    //    return new string[] { "value1", "value2" };
+    //}
 
-        // GET api/<WeaponController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+    //GET api/<WeaponController>/5
+    [HttpGet("/Weapon/{id}")]
+    public async Task<ActionResult<Weapon>> Get(int id)
+    {
+      ViewWeapon weapon = await _repo.Read(id);
 
-        // POST api/<WeaponController>
-        [HttpPost]
+      return Ok(weapon);
+    }
+
+    // POST api/<WeaponController>
+    [HttpPost]
         public async Task<ActionResult<ViewWeapon>> Post([FromBody] ViewWeapon weapon)
         {
             if (!ModelState.IsValid) return BadRequest("Invalid data.");

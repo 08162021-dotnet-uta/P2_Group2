@@ -30,10 +30,12 @@ namespace NotFightClub_Logic.Repositiories
             return _mapper.ModelToViewModel(addedWeapon);
         }
 
-        public Task<ViewWeapon> Read(int obj)
+        public async Task<ViewWeapon> Read(int obj)
         {
-            throw new NotImplementedException();
-        }
+          Weapon weapon = await _dbContext.Weapons.FromSqlInterpolated($"select * from Weapon where WeaponId = {obj}").FirstOrDefaultAsync();
+
+          return _mapper.ModelToViewModel(weapon);
+    }
 
         public Task<List<ViewWeapon>> Read()
         {

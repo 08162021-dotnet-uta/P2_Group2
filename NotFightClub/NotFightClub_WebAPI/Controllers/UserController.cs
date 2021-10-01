@@ -52,7 +52,9 @@ namespace NotFightClub_WebAPI.Controllers
     [HttpGet("/[action]/{email}")]
     public async Task<ActionResult<ViewUserInfo>> Login(string email)
     {
+
       if (!ModelState.IsValid) return BadRequest("Invalid data.");
+
       var loggedUser = await _ur.Read(email);
 
       _logger.LogInformation($"{loggedUser.UserName} logged in");
