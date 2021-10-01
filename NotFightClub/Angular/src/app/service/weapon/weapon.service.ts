@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Weapon } from '../../interfaces/weapon';
 
 @Injectable({
@@ -25,6 +25,10 @@ export class WeaponService {
         'Content-Type': 'application/json'
       })
     })
+  }
+
+  getWeaponById(id: number): Observable<Weapon> {
+    return this.http.get<Weapon>(`${this.url}/Weapon/` + id).pipe(map((trait: Weapon) => trait))
   }
 
 }
