@@ -45,10 +45,10 @@ stages:
           publishWebProjects: true
           projects: $(pathtosolution)
           zipAfterPublish: true
-      - task: AzureRmWebAppDeployment@4
-        displayName: Deployment
-        inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: 'NotFightClub(8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2)'
-          WebAppName: 'NotFightClubApi'
-          packageForLinux: $(System.DefaultWorkingDirectory)/**/*.zip'
+     # - task: AzureRmWebAppDeployment@4
+      #  displayName: Deployment
+       # inputs:
+        #  ConnectionType: 'AzureRM'
+         # azureSubscription: 'NotFightClub(8f7a3d65-6e62-4cf4-b5a9-193406d2e5c2)'
+         # WebAppName: 'NotFightClubApi'
+         # packageForLinux: $(System.DefaultWorkingDirectory)/**/*.zip'
